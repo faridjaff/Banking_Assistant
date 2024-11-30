@@ -25,4 +25,10 @@ public class Transaction {
 
   @Column(nullable = false, updatable = false)
   private Instant transactionDate = Instant.now();
+
+  @Version
+  private Long version;
+
+  @Column
+  private Long originalTransactionId;
 }

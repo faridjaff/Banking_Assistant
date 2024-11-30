@@ -24,11 +24,8 @@ public class CreditLimitController {
     Optional<CreditLimit> creditLimit = creditLimitRepository.findByAccountAccountId(accountId);
     if (creditLimit.isPresent()) {
       CreditLimit cl = creditLimit.get();
-      System.out.println("last updated is " + cl.getLastUpdated());
-      System.out.println("Instant.now() is " + Instant.now());
-      System.out.println("Duration is " + Duration.between(cl.getLastUpdated(), Instant.now()));
-      if (Duration.between(cl.getLastUpdated(), Instant.now()).toMinutes() < 2) {
-        return ResponseEntity.status(HttpStatus.TOO_EARLY).body("Credit limit was increased less than 2 mins ago.");
+      if (Duration.between(cl.getLastUpdated(), Instant.now()).toHours() < 5) {
+        return ResponseEntity.status(HttpStatus.TOO_EARLY).body("Credit limit was increased less than 5 hours ago.");
       }
       cl.setAssignedLimit(cl.getAssignedLimit() + increaseAmount);
       cl.setAvailableCredit(cl.getAvailableCredit() + increaseAmount);

@@ -13,6 +13,6 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info().title("Spring Boot API").version("1.0.0"))
-                .addServersItem(new Server().url("https://4aba-24-153-202-14.ngrok-free.app").description("Ngrok HTTPS Tunnel"));
+                .addServersItem(new Server().url("https://03a5-96-8-168-137.ngrok-free.app").description("Ngrok HTTPS Tunnel"));
     }
 }
